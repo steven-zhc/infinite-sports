@@ -1,0 +1,308 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const ENROLLMENT_URL = "#contact";
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const asset = (path: string) => `${base}${path}`;
+
+const programs = [
+  {
+    number: "01",
+    title: "Volleyball",
+    tag: "Technique + Teamwork",
+    description:
+      "Build confident fundamentals through serving, passing, setting, movement, and game-ready team play.",
+    focus: ["Ball control", "Court movement", "Team communication"],
+  },
+  {
+    number: "02",
+    title: "Basketball",
+    tag: "Skill + Game IQ",
+    description:
+      "Develop strong habits on both ends of the court with purposeful reps, smart decisions, and competitive play.",
+    focus: ["Handle & footwork", "Finishing", "Defense & spacing"],
+  },
+  {
+    number: "03",
+    title: "Core Training",
+    tag: "Strength + Movement",
+    description:
+      "Create the athletic foundation every young player needs: balance, coordination, stability, and speed.",
+    focus: ["Body control", "Agility", "Injury resilience"],
+  },
+];
+
+const coaches = [
+  {
+    initials: "HC",
+    role: "Head Coach",
+    specialty: "Program leadership & athlete development",
+  },
+  {
+    initials: "VC",
+    role: "Volleyball Coach",
+    specialty: "Fundamentals, movement & team play",
+  },
+  {
+    initials: "BC",
+    role: "Basketball Coach",
+    specialty: "Skill development & game decisions",
+  },
+];
+
+const description =
+  "Youth volleyball, basketball, and core training built around strong fundamentals, confidence, and long-term growth.";
+---
+
+<BaseLayout title="Infinite Sports | Youth Sports Academy" description={description}>
+  <main>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Infinite Sports home">
+        <span class="brand-mark">∞</span>
+        <span class="brand-name">
+          Infinite <strong>Sports</strong>
+        </span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <a href="#programs">Programs</a>
+        <a href="#campus">Campus</a>
+        <a href="#team">Our team</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="button button-small" href={ENROLLMENT_URL}>
+        Enroll <span aria-hidden="true">↗</span>
+      </a>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> Youth sports academy</p>
+        <h1>
+          Build the
+          <span>athlete within.</span>
+        </h1>
+        <p class="hero-intro">
+          Focused coaching. Strong fundamentals. A place where young athletes
+          learn to move, compete, and grow with confidence.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href={ENROLLMENT_URL}>
+            Explore enrollment <span aria-hidden="true">↗</span>
+          </a>
+          <a class="text-link" href="#programs">
+            View our programs <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div
+          class="hero-image"
+          role="img"
+          aria-label="Coach working with young athletes in a gym"
+        ></div>
+        <div class="hero-stat hero-stat-left">
+          <strong>3</strong>
+          <span>Training paths</span>
+        </div>
+        <div class="hero-stat hero-stat-right">
+          <strong>All</strong>
+          <span>Skill levels welcome</span>
+        </div>
+      </div>
+
+      <div class="hero-ticker" aria-hidden="true">
+        <span>Move</span><i>✦</i><span>Train</span><i>✦</i><span>Compete</span
+        ><i>✦</i><span>Grow</span>
+      </div>
+    </section>
+
+    <section class="section programs-section" id="programs">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow"><span></span> Find your game</p>
+          <h2>Programs built for progress.</h2>
+        </div>
+        <p>
+          Every class combines clear instruction, high-quality repetitions,
+          and the right amount of challenge for developing athletes.
+        </p>
+      </div>
+
+      <div class="program-grid">
+        {
+          programs.map((program) => (
+            <article class="program-card">
+              <div class="program-card-top">
+                <span>{program.number}</span>
+                <span>{program.tag}</span>
+              </div>
+              <h3>{program.title}</h3>
+              <p>{program.description}</p>
+              <ul>
+                {program.focus.map((item) => (
+                  <li><span aria-hidden="true">+</span>{item}</li>
+                ))}
+              </ul>
+              <a
+                href={ENROLLMENT_URL}
+                aria-label={`Ask about ${program.title}`}
+              >
+                Ask about this program <span aria-hidden="true">↗</span>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="campus section-dark" id="campus">
+      <div class="campus-court" aria-hidden="true">
+        <span class="court-circle"></span>
+        <span class="court-line"></span>
+      </div>
+      <div class="campus-copy">
+        <p class="eyebrow"><span></span> Our campus</p>
+        <h2>Your home court for what comes next.</h2>
+        <p>
+          A welcoming training environment with room to learn, move, and get
+          better—one purposeful session at a time.
+        </p>
+        <div class="campus-details">
+          <div>
+            <span>Location</span>
+            <strong>Campus address coming soon</strong>
+          </div>
+          <div>
+            <span>Training hours</span>
+            <strong>Class schedule coming soon</strong>
+          </div>
+        </div>
+        <a class="button button-outline" href="#contact">
+          Plan your first visit <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section team-section" id="team">
+      <div class="section-heading team-heading">
+        <div>
+          <p class="eyebrow"><span></span> The coaching team</p>
+          <h2>Great coaches shape more than skills.</h2>
+        </div>
+        <p>
+          Our coaching approach is positive, detail-driven, and built around
+          the long-term development of every athlete.
+        </p>
+      </div>
+
+      <div class="coach-grid">
+        {
+          coaches.map((coach, index) => (
+            <article class="coach-card">
+              <div class="coach-number">0{index + 1}</div>
+              <div class="coach-avatar"><span>{coach.initials}</span></div>
+              <div>
+                <h3>{coach.role}</h3>
+                <p>{coach.specialty}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="gallery section-dark" id="gallery">
+      <div class="gallery-heading">
+        <div>
+          <p class="eyebrow"><span></span> Inside the work</p>
+          <h2>Energy you can feel.</h2>
+        </div>
+        <p>Real focus. Real reps. Real confidence taking shape.</p>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-item gallery-wide">
+          <img
+            src={asset("volleyball.jpg")}
+            alt="Volleyball players celebrating together on an indoor court"
+          />
+          <figcaption><span>01</span> Teamwork in motion</figcaption>
+        </figure>
+        <figure class="gallery-item gallery-tall">
+          <img
+            src={asset("basketball.jpg")}
+            alt="Basketball on a polished indoor court"
+          />
+          <figcaption><span>02</span> Ready for the next rep</figcaption>
+        </figure>
+        <figure class="gallery-item gallery-small">
+          <img
+            src={asset("hero-team.jpg")}
+            alt="Young athletes listening to their coach"
+          />
+          <figcaption><span>03</span> Coaching that connects</figcaption>
+        </figure>
+        <div class="gallery-quote">
+          <span class="quote-mark">“</span>
+          <blockquote>
+            Strong habits today. Limitless potential tomorrow.
+          </blockquote>
+          <span class="quote-rule"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact-watermark" aria-hidden="true">∞</div>
+      <div class="contact-copy">
+        <p class="eyebrow"><span></span> Start here</p>
+        <h2>Ready to find the right program?</h2>
+        <p>
+          Tell us about your athlete, their age, and what they want to work on.
+          We’ll help you choose a starting point.
+        </p>
+        <a class="button button-dark" href="#contact-details">
+          Enrollment form coming soon <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <div class="contact-details" id="contact-details">
+        <div>
+          <span>Email</span>
+          <strong>Contact email coming soon</strong>
+        </div>
+        <div>
+          <span>Phone</span>
+          <strong>Contact number coming soon</strong>
+        </div>
+        <div>
+          <span>Campus</span>
+          <strong>Address coming soon</strong>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <a class="brand brand-footer" href="#top" aria-label="Back to top">
+        <span class="brand-mark">∞</span>
+        <span class="brand-name">Infinite <strong>Sports</strong></span>
+      </a>
+      <p>Train with purpose. Grow without limits.</p>
+      <div>
+        <a href="#programs">Programs</a>
+        <a href="#campus">Campus</a>
+        <a href="#team">Team</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <small>
+        © {new Date().getFullYear()} Infinite Sports. Photos: cottonbro studio /
+        Pexels, Vince Fleming &amp; Lesli Whitecotton / Unsplash.
+      </small>
+    </footer>
+  </main>
+</BaseLayout>
