@@ -52,6 +52,31 @@ const coaches = [
   },
 ];
 
+// Leave mapUrl empty until the real address is known; the Directions link is hidden without it.
+const campuses = [
+  {
+    name: "Campus name coming soon",
+    address: "Address coming soon",
+    hours: "Schedule coming soon",
+    mapUrl: "",
+  },
+  {
+    name: "Campus name coming soon",
+    address: "Address coming soon",
+    hours: "Schedule coming soon",
+    mapUrl: "",
+  },
+  {
+    name: "Campus name coming soon",
+    address: "Address coming soon",
+    hours: "Schedule coming soon",
+    mapUrl: "",
+  },
+];
+
+const countWords = ["Zero", "One", "Two", "Three", "Four", "Five", "Six"];
+const campusCount = countWords[campuses.length] ?? String(campuses.length);
+
 const description =
   "Youth volleyball, basketball, and core training built around strong fundamentals, confidence, and long-term growth.";
 ---
@@ -68,7 +93,7 @@ const description =
 
       <nav aria-label="Primary navigation">
         <a href="#programs">Programs</a>
-        <a href="#campus">Campus</a>
+        <a href="#campus">Campuses</a>
         <a href="#team">Our team</a>
         <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
@@ -168,22 +193,31 @@ const description =
         <span class="court-line"></span>
       </div>
       <div class="campus-copy">
-        <p class="eyebrow"><span></span> Our campus</p>
+        <p class="eyebrow"><span></span> Our campuses</p>
         <h2>Your home court for what comes next.</h2>
         <p>
-          A welcoming training environment with room to learn, move, and get
-          better—one purposeful session at a time.
+          {campusCount} welcoming training locations with room to learn,
+          move, and get better—choose the one closest to you.
         </p>
-        <div class="campus-details">
-          <div>
-            <span>Location</span>
-            <strong>Campus address coming soon</strong>
-          </div>
-          <div>
-            <span>Training hours</span>
-            <strong>Class schedule coming soon</strong>
-          </div>
-        </div>
+        <ol class="campus-list">
+          {
+            campuses.map((campus, index) => (
+              <li>
+                <span class="campus-number">0{index + 1}</span>
+                <div>
+                  <h3>{campus.name}</h3>
+                  <p>{campus.address}</p>
+                  <p class="campus-hours">{campus.hours}</p>
+                  {campus.mapUrl && (
+                    <a href={campus.mapUrl} target="_blank" rel="noopener">
+                      Directions <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                </div>
+              </li>
+            ))
+          }
+        </ol>
         <a class="button button-outline" href="#contact">
           Plan your first visit <span aria-hidden="true">↗</span>
         </a>
@@ -281,8 +315,8 @@ const description =
           <strong>Contact number coming soon</strong>
         </div>
         <div>
-          <span>Campus</span>
-          <strong>Address coming soon</strong>
+          <span>Campuses</span>
+          <strong><a href="#campus">{campuses.length} locations — see addresses</a></strong>
         </div>
       </div>
     </section>
@@ -295,7 +329,7 @@ const description =
       <p>Train with purpose. Grow without limits.</p>
       <div>
         <a href="#programs">Programs</a>
-        <a href="#campus">Campus</a>
+        <a href="#campus">Campuses</a>
         <a href="#team">Team</a>
         <a href="#contact">Contact</a>
       </div>
