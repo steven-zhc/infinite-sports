@@ -15,7 +15,7 @@ test("builds a complete static landing page", async () => {
   assert.match(html, /id="gallery"/i);
   assert.match(html, /id="contact"/i);
   assert.match(html, /src="\/volleyball\.jpg"/i);
-  assert.match(html, /https:\/\/www\.theinfnitesports\.com\//i);
+  assert.match(html, /https:\/\/www\.theinfinitesports\.com\//i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|wrangler/i);
 });
 

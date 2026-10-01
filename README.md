@@ -34,11 +34,11 @@ open **Settings → Pages** and choose **GitHub Actions** as the publishing sour
 The site is served at:
 
 ```text
-https://www.theinfnitesports.com/
+https://www.theinfinitesports.com/
 ```
 
 `astro.config.mjs` sets `site` to that URL (no `base`), and `public/CNAME`
-contains `www.theinfnitesports.com`.
+contains `www.theinfinitesports.com`.
 
 DNS (GoDaddy → Manage DNS), with any “Parked” `A` record, the default
 `www → @` `CNAME`, and domain forwarding removed:
@@ -51,7 +51,7 @@ DNS (GoDaddy → Manage DNS), with any “Parked” `A` record, the default
 | A     | @    | 185.199.111.153        |
 | CNAME | www  | steven-zhc.github.io   |
 
-Then set **Settings → Pages → Custom domain** to `www.theinfnitesports.com`
+Then set **Settings → Pages → Custom domain** to `www.theinfinitesports.com`
 and enable **Enforce HTTPS** once the certificate is issued.
 
 ## Launch content
