@@ -1,8 +1,7 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://steven-zhc.github.io",
-  base: "/infinite-sports",
+  site: "https://www.theinfnitesports.com",
   output: "static",
   trailingSlash: "always",
 });

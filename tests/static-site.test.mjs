@@ -14,14 +14,14 @@ test("builds a complete static landing page", async () => {
   assert.match(html, /id="team"/i);
   assert.match(html, /id="gallery"/i);
   assert.match(html, /id="contact"/i);
-  assert.match(html, /\/infinite-sports\/volleyball\.jpg/i);
-  assert.match(html, /https:\/\/steven-zhc\.github\.io\/infinite-sports\//i);
+  assert.match(html, /src="\/volleyball\.jpg"/i);
+  assert.match(html, /https:\/\/www\.theinfnitesports\.com\//i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|wrangler/i);
 });
 
 test("copies all public launch assets", async () => {
   await Promise.all(
-    ["hero-team.jpg", "volleyball.jpg", "basketball.jpg", "og.png"].map(
+    ["hero-team.jpg", "volleyball.jpg", "basketball.jpg", "og.png", "CNAME"].map(
       (name) => access(new URL(`../dist/${name}`, import.meta.url)),
     ),
   );
