@@ -29,21 +29,30 @@ The deployable static website is written to `dist/`.
 Pushing `main` runs `.github/workflows/deploy.yml`. In the GitHub repository,
 open **Settings → Pages** and choose **GitHub Actions** as the publishing source.
 
-The default project URL is:
-
-```text
-https://steven-zhc.github.io/infinite-sports/
-```
-
 ## Custom domain
 
-When the final hostname is known:
+The site is served at:
 
-1. Set `site` in `astro.config.mjs` to the full custom-domain URL.
-2. Remove the `base` option from `astro.config.mjs`.
-3. Add `public/CNAME` containing only the hostname.
-4. Configure the same hostname in **GitHub → Settings → Pages** and add the
-   DNS records GitHub provides.
+```text
+https://www.theinfnitesports.com/
+```
+
+`astro.config.mjs` sets `site` to that URL (no `base`), and `public/CNAME`
+contains `www.theinfnitesports.com`.
+
+DNS (GoDaddy → Manage DNS), with any “Parked” `A` record, the default
+`www → @` `CNAME`, and domain forwarding removed:
+
+| Type  | Name | Value                  |
+| ----- | ---- | ---------------------- |
+| A     | @    | 185.199.108.153        |
+| A     | @    | 185.199.109.153        |
+| A     | @    | 185.199.110.153        |
+| A     | @    | 185.199.111.153        |
+| CNAME | www  | steven-zhc.github.io   |
+
+Then set **Settings → Pages → Custom domain** to `www.theinfnitesports.com`
+and enable **Enforce HTTPS** once the certificate is issued.
 
 ## Launch content
 
