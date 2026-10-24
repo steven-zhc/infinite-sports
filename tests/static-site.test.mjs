@@ -26,6 +26,7 @@ test("builds the English landing page with translated source content", async () 
   assert.match(html, /id="gallery"/i);
   assert.match(html, /id="contact"/i);
   assert.match(html, /src="\/volleyball\.jpg"/i);
+  assert.match(html, /src="\/infinite-sports-logo\.jpg"/i);
   assert.match(html, /https:\/\/www\.theinfinitesports\.com\//i);
   assert.match(html, /hreflang="zh-CN" href="https:\/\/www\.theinfinitesports\.com\/zh\/"/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|wrangler/i);
@@ -50,7 +51,14 @@ test("builds a complete Chinese version with working language metadata", async (
 
 test("copies all public launch assets", async () => {
   await Promise.all(
-    ["hero-team.jpg", "volleyball.jpg", "basketball.jpg", "og.png", "CNAME"].map(
+    [
+      "hero-team.jpg",
+      "volleyball.jpg",
+      "basketball.jpg",
+      "infinite-sports-logo.jpg",
+      "og.png",
+      "CNAME",
+    ].map(
       (name) => access(new URL(`../dist/${name}`, import.meta.url)),
     ),
   );

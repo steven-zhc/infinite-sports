@@ -28,8 +28,9 @@ const enrollmentUrl =
   <main>
     <header class="site-header">
       <a class="brand" href={`${homeUrl}#top`} aria-label="Infinite Sports">
-        <span class="brand-mark">∞</span>
-        <span class="brand-name">Infinite <strong>Sports</strong></span>
+        <span class="brand-logo" aria-hidden="true">
+          <img src={asset("infinite-sports-logo.jpg")} alt="" loading="eager" decoding="async" />
+        </span>
       </a>
 
       <nav aria-label={isEnglish ? "Primary navigation" : "主要导航"}>
@@ -268,8 +269,9 @@ const enrollmentUrl =
 
     <footer>
       <a class="brand brand-footer" href={`${homeUrl}#top`} aria-label="Infinite Sports">
-        <span class="brand-mark">∞</span>
-        <span class="brand-name">Infinite <strong>Sports</strong></span>
+        <span class="brand-logo" aria-hidden="true">
+          <img src={asset("infinite-sports-logo.jpg")} alt="" loading="lazy" decoding="async" />
+        </span>
       </a>
       <p>{content.footer.tagline}</p>
       <div>

@@ -65,35 +65,21 @@ img {
 .brand {
   align-items: center;
   display: inline-flex;
-  gap: 11px;
   justify-self: start;
-  text-transform: uppercase;
 }
 
-.brand-mark {
-  align-items: center;
-  background: var(--orange);
-  color: white;
-  display: inline-flex;
-  font-family: Arial, sans-serif;
-  font-size: 31px;
-  font-weight: 900;
-  height: 38px;
-  justify-content: center;
-  line-height: 1;
-  transform: skew(-8deg);
-  width: 46px;
+.brand-logo {
+  display: block;
+  height: 54px;
+  overflow: hidden;
+  width: clamp(170px, 16vw, 220px);
 }
 
-.brand-name {
-  font-size: 13px;
-  font-weight: 750;
-  letter-spacing: 0.12em;
-  line-height: 1;
-}
-
-.brand-name strong {
-  color: var(--orange);
+.brand-logo img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center 61.8%;
+  width: 100%;
 }
 
 .site-header nav {
@@ -1049,8 +1035,7 @@ footer small {
 @media (max-width: 780px) {
   html { scroll-padding-top: 68px; }
   .site-header { height: 68px; }
-  .brand-name { font-size: 11px; }
-  .brand-mark { font-size: 25px; height: 33px; width: 40px; }
+  .brand-logo { height: 43px; width: 176px; }
   .button-small { min-height: 38px; padding: 0 14px; }
   .hero { min-height: 840px; padding-top: 74px; }
   .hero h1 { font-size: clamp(55px, 16vw, 88px); line-height: .84; }
@@ -1090,6 +1075,7 @@ footer small {
 }
 
 @media (max-width: 520px) {
+  .brand-logo { height: 38px; width: 154px; }
   .header-actions { gap: 8px; }
   .language-switch { padding: 8px 9px; }
   .site-header .button { display: none; }
