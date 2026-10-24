@@ -97,7 +97,7 @@ export const englishContent: SiteContent = {
   lang: "en",
   title: "Infinite Sports | Youth Sports Academy in Houston",
   description:
-    "Professional youth basketball, volleyball, athletic performance, private training, camps, and competitions across Katy, Cypress, and Chinatown in Houston.",
+    "Professional youth basketball, volleyball, athletic performance, private training, camps, and competitions across Katy, Cypress, and China Town in Houston.",
   switchLabel: "中文",
   nav: {
     programs: "Programs",
@@ -124,7 +124,7 @@ export const englishContent: SiteContent = {
     title: "We build athletes, not just players.",
     paragraphs: [
       "Founded in 2022 and headquartered in Houston, Texas, Infinite Sports is a professional academy focused on youth sports education, basketball development, and sport-specific athletic performance.",
-      "With training locations in Katy, Cypress, and Chinatown, we serve young athletes of different ages and ability levels through structured, science-based coaching. Basketball is at our core, supported by athletic performance, volleyball, private training, camps, and youth competitions.",
+      "With training locations in Katy, Cypress, and China Town, we serve young athletes of different ages and ability levels through structured, science-based coaching. Basketball is at our core, supported by athletic performance, volleyball, private training, camps, and youth competitions.",
     ],
     philosophyLabel: "Our philosophy",
     philosophy: "We don’t just train players. We build athletes.",
@@ -210,7 +210,7 @@ export const englishContent: SiteContent = {
     items: [
       { name: "Cypress", address: "15235 Spring Cypress Rd, Cypress, TX 77429" },
       { name: "Katy", address: "21915 Royal Montreal Dr, Katy, TX 77450" },
-      { name: "Chinatown", address: "8800 W Sam Houston Pkwy S, Houston, TX 77099" },
+      { name: "China Town", address: "8800 W Sam Houston Pkwy S, Houston, TX 77099" },
     ],
   },
   team: {
@@ -275,7 +275,7 @@ export const englishContent: SiteContent = {
     coach: "Coach Wang",
     phoneLabel: "Call or text",
     campusesLabel: "Campuses",
-    campuses: "Katy · Cypress · Chinatown",
+    campuses: "Katy · Cypress · China Town",
   },
   footer: {
     tagline: "Greatness starts young.",

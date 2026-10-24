@@ -13,6 +13,8 @@ test("builds the English landing page with translated source content", async () 
   assert.match(html, /Greatness\s*<span>starts young\.<\/span>/i);
   assert.match(html, /Founded in 2022 and headquartered in Houston/i);
   assert.match(html, /15235 Spring Cypress Rd, Cypress, TX 77429/i);
+  assert.match(html, /China Town/i);
+  assert.doesNotMatch(html, /Chinatown/i);
   assert.match(html, /832-666-0867/i);
   assert.match(html, /id="programs"/i);
   assert.match(html, /id="campus"/i);
