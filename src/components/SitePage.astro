@@ -1,0 +1,267 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import type { SiteContent } from "../data/site-content";
+
+interface Props {
+  content: SiteContent;
+}
+
+const { content } = Astro.props;
+const isEnglish = content.locale === "en";
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const asset = (path: string) => `${base}${path}`;
+const homeUrl = isEnglish ? base : `${base}zh/`;
+const alternateUrl = isEnglish ? `${base}zh/` : base;
+const canonicalPath = isEnglish ? "" : "zh/";
+---
+
+<BaseLayout
+  title={content.title}
+  description={content.description}
+  lang={content.lang}
+  canonicalPath={canonicalPath}
+>
+  <main>
+    <header class="site-header">
+      <a class="brand" href={`${homeUrl}#top`} aria-label="Infinite Sports">
+        <span class="brand-mark">∞</span>
+        <span class="brand-name">Infinite <strong>Sports</strong></span>
+      </a>
+
+      <nav aria-label={isEnglish ? "Primary navigation" : "主要导航"}>
+        <a href="#programs">{content.nav.programs}</a>
+        <a href="#campus">{content.nav.campuses}</a>
+        <a href="#team">{content.nav.team}</a>
+        <a href="#gallery">{content.nav.gallery}</a>
+        <a href="#contact">{content.nav.contact}</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="language-switch" href={alternateUrl} lang={isEnglish ? "zh-CN" : "en"}>
+          {content.switchLabel}
+        </a>
+        <a class="button button-small" href="#contact">
+          {content.nav.enroll} <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> {content.hero.eyebrow}</p>
+        <h1>
+          {content.hero.lineOne}
+          <span>{content.hero.lineTwo}</span>
+        </h1>
+        <p class="hero-intro">{content.hero.intro}</p>
+        <div class="hero-actions">
+          <a class="button" href="#contact">
+            {content.hero.primary} <span aria-hidden="true">↗</span>
+          </a>
+          <a class="text-link" href="#programs">
+            {content.hero.secondary} <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-image" role="img" aria-label={content.gallery.alts[2]}></div>
+        <div class="hero-stat hero-stat-left">
+          <strong>3</strong>
+          <span>{content.hero.campusStat}</span>
+        </div>
+        <div class="hero-stat hero-stat-right">
+          <strong>3</strong>
+          <span>{content.hero.levelsStat}</span>
+        </div>
+      </div>
+
+      <div class="hero-ticker" aria-hidden="true">
+        {content.hero.ticker.map((item) => <><span>{item}</span><i>✦</i></>)}
+      </div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow"><span></span> {content.about.eyebrow}</p>
+          <h2>{content.about.title}</h2>
+        </div>
+        <div class="about-copy">
+          {content.about.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </div>
+      <div class="philosophy-panel">
+        <span>{content.about.philosophyLabel}</span>
+        <blockquote>{content.about.philosophy}</blockquote>
+        <p>{content.about.philosophyBody}</p>
+      </div>
+    </section>
+
+    <section class="section programs-section" id="programs">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow"><span></span> {content.programs.eyebrow}</p>
+          <h2>{content.programs.title}</h2>
+        </div>
+        <p>{content.programs.intro}</p>
+      </div>
+
+      <div class="program-grid">
+        {content.programs.items.map((program) => (
+          <article class="program-card">
+            <div class="program-card-top">
+              <span>{program.number}</span>
+              <span>{program.tag}</span>
+            </div>
+            <h3>{program.title}</h3>
+            <p>{program.description}</p>
+            <ul>
+              {program.focus.map((item) => <li><span aria-hidden="true">+</span>{item}</li>)}
+            </ul>
+            <a href="#contact" aria-label={`${content.programs.ask}: ${program.title}`}>
+              {content.programs.ask} <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+        ))}
+      </div>
+
+      <div class="level-pathway">
+        <p class="eyebrow"><span></span> {content.programs.levelsLabel}</p>
+        <div class="level-grid">
+          {content.programs.levels.map((level, index) => (
+            <article class="level-card">
+              <span>0{index + 1}</span>
+              <h3>{level.name}</h3>
+              <strong>{level.ages}</strong>
+              <p>{level.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="campus section-dark" id="campus">
+      <div class="campus-court" aria-hidden="true">
+        <span class="court-circle"></span>
+        <span class="court-line"></span>
+      </div>
+      <div class="campus-copy">
+        <p class="eyebrow"><span></span> {content.campuses.eyebrow}</p>
+        <h2>{content.campuses.title}</h2>
+        <p>{content.campuses.intro}</p>
+        <div class="campus-details">
+          {content.campuses.items.map((campus) => (
+            <div>
+              <span>{campus.name}</span>
+              <strong>{campus.address}</strong>
+            </div>
+          ))}
+        </div>
+        <a class="button button-outline" href="#contact">
+          {content.campuses.visit} <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section team-section" id="team">
+      <div class="section-heading team-heading">
+        <div>
+          <p class="eyebrow"><span></span> {content.team.eyebrow}</p>
+          <h2>{content.team.title}</h2>
+        </div>
+        <p>{content.team.intro}</p>
+      </div>
+      <div class="coach-grid">
+        {content.team.items.map((item) => (
+          <article class="coach-card">
+            <div class="coach-number">{item.initials}</div>
+            <div class="coach-avatar"><span>{item.initials}</span></div>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="purpose-grid">
+        <article>
+          <span>{content.team.missionLabel}</span>
+          <p>{content.team.mission}</p>
+        </article>
+        <article>
+          <span>{content.team.visionLabel}</span>
+          <p>{content.team.vision}</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="gallery section-dark" id="gallery">
+      <div class="gallery-heading">
+        <div>
+          <p class="eyebrow"><span></span> {content.gallery.eyebrow}</p>
+          <h2>{content.gallery.title}</h2>
+        </div>
+        <p>{content.gallery.intro}</p>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-item gallery-wide">
+          <img src={asset("volleyball.jpg")} alt={content.gallery.alts[0]} />
+          <figcaption><span>01</span> {content.gallery.captions[0]}</figcaption>
+        </figure>
+        <figure class="gallery-item gallery-tall">
+          <img src={asset("basketball.jpg")} alt={content.gallery.alts[1]} />
+          <figcaption><span>02</span> {content.gallery.captions[1]}</figcaption>
+        </figure>
+        <figure class="gallery-item gallery-small">
+          <img src={asset("hero-team.jpg")} alt={content.gallery.alts[2]} />
+          <figcaption><span>03</span> {content.gallery.captions[2]}</figcaption>
+        </figure>
+        <div class="gallery-quote">
+          <span class="quote-mark">“</span>
+          <blockquote>{content.gallery.quote}</blockquote>
+          <span class="quote-rule"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact-watermark" aria-hidden="true">∞</div>
+      <div class="contact-copy">
+        <p class="eyebrow"><span></span> {content.contact.eyebrow}</p>
+        <h2>{content.contact.title}</h2>
+        <p>{content.contact.intro}</p>
+        <span class="button button-dark button-disabled" aria-disabled="true">
+          {content.contact.button}
+        </span>
+      </div>
+      <div class="contact-details" id="contact-details">
+        <div><span>{content.contact.personLabel}</span><strong>{content.contact.person}</strong></div>
+        <div><span>{content.contact.coachLabel}</span><strong>{content.contact.coach}</strong></div>
+        <div>
+          <span>{content.contact.phoneLabel}</span>
+          <strong><a href="tel:+18326660867">832-666-0867</a> · <a href="tel:+13466348366">346-634-8366</a></strong>
+        </div>
+        <div><span>{content.contact.campusesLabel}</span><strong>{content.contact.campuses}</strong></div>
+      </div>
+    </section>
+
+    <footer>
+      <a class="brand brand-footer" href={`${homeUrl}#top`} aria-label="Infinite Sports">
+        <span class="brand-mark">∞</span>
+        <span class="brand-name">Infinite <strong>Sports</strong></span>
+      </a>
+      <p>{content.footer.tagline}</p>
+      <div>
+        <a href="#programs">{content.nav.programs}</a>
+        <a href="#campus">{content.nav.campuses}</a>
+        <a href="#team">{content.nav.team}</a>
+        <a href="#contact">{content.nav.contact}</a>
+      </div>
+      <small>© {new Date().getFullYear()} Infinite Sports LLC. {content.footer.photos}</small>
+    </footer>
+  </main>
+</BaseLayout>
