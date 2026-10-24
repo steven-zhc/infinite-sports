@@ -268,7 +268,7 @@ export const englishContent: SiteContent = {
     title: "Find the right starting point.",
     intro:
       "Tell us your athlete’s age, sports background, preferred campus, and goals. We’ll help you choose a program and level.",
-    button: "Enrollment form coming soon",
+    button: "Open enrollment form",
     personLabel: "Primary contact",
     person: "Ricki",
     coachLabel: "Coaching contact",
@@ -452,7 +452,7 @@ export const chineseContent: SiteContent = {
     title: "为孩子找到合适的起点。",
     intro:
       "请告诉我们孩子的年龄、运动基础、意向校区与训练目标，我们会帮助您选择合适的课程和级别。",
-    button: "在线报名表即将上线",
+    button: "填写在线报名表",
     personLabel: "联系人",
     person: "Ricki",
     coachLabel: "教练联系",

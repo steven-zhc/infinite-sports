@@ -976,17 +976,6 @@ img {
   background: white;
 }
 
-.button-disabled {
-  cursor: default;
-  opacity: .78;
-}
-
-.button-disabled:hover {
-  background: var(--ink);
-  color: white;
-  transform: none;
-}
-
 .contact-details {
   align-self: center;
   background: var(--ink);

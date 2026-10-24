@@ -16,6 +16,10 @@ test("builds the English landing page with translated source content", async () 
   assert.match(html, /China Town/i);
   assert.doesNotMatch(html, /Chinatown/i);
   assert.match(html, /832-666-0867/i);
+  assert.match(
+    html,
+    /https:\/\/docs\.google\.com\/forms\/d\/e\/1FAIpQLSebGqG9GWPaNaCSjmlAdFGRdjDk5HmV4kgpbP0AtevkOlXAWg\/viewform/i,
+  );
   assert.match(html, /id="programs"/i);
   assert.match(html, /id="campus"/i);
   assert.match(html, /id="team"/i);
@@ -35,6 +39,10 @@ test("builds a complete Chinese version with working language metadata", async (
   assert.match(html, /浩瀚体育（Infinite Sports）成立于 2022 年/i);
   assert.match(html, /青少年篮球培训/i);
   assert.match(html, /中国城校区/i);
+  assert.match(
+    html,
+    /https:\/\/docs\.google\.com\/forms\/d\/e\/1FAIpQLSebGqG9GWPaNaCSjmlAdFGRdjDk5HmV4kgpbP0AtevkOlXAWg\/viewform/i,
+  );
   assert.match(html, /href="\/" lang="en"/i);
   assert.match(html, /rel="canonical" href="https:\/\/www\.theinfinitesports\.com\/zh\/"/i);
   assert.match(html, /src="\/basketball\.jpg"/i);
